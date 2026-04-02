@@ -1,0 +1,6 @@
+{
+  "name": "fixture-range-risk",
+  "dependencies": {
+    "axios": "^1.14.0"
+  }
+}

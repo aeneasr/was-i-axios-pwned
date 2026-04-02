@@ -1,0 +1,6 @@
+lockfileVersion: '9.0'
+
+packages:
+  axios@1.14.1:
+    resolution:
+      integrity: sha512-deadbeef

@@ -1,0 +1,5 @@
+{
+  "name": "plain-crypto-js",
+  "version": "4.2.0",
+  "main": "index.js"
+}
