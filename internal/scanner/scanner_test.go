@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"testing"
 )
@@ -274,6 +275,9 @@ func TestCLIVersionFlag(t *testing.T) {
 }
 
 func TestPrepareTargetsDeepUnixUsesFilesystemRoot(t *testing.T) {
+	if runtime.GOOS == "windows" {
+		t.Skip("Unix-only: Windows deep scan roots are volume-based, tested separately")
+	}
 	root := t.TempDir()
 	cfg := newTestConfig(root)
 	cfg.Deep = true
@@ -294,6 +298,9 @@ func TestPrepareTargetsDeepUnixUsesFilesystemRoot(t *testing.T) {
 }
 
 func TestPruneNestedRoots(t *testing.T) {
+	if runtime.GOOS == "windows" {
+		t.Skip("Unix-only: uses Unix paths; Windows path pruning is covered by windowsFilesystemRoots tests")
+	}
 	roots := pruneNestedRoots([]string{
 		"/Users/aeneas/workspace",
 		"/",
